@@ -41,6 +41,7 @@ import socket
 import sys
 import time
 import urllib
+import requests.packages.urllib3.connectionpool as httplib2
 import urlparse
 import bisect
 
@@ -1150,7 +1151,7 @@ if hasattr(httplib, 'HTTPS'):
             self._key_file = key_file
             self._cert_file = cert_file
         def __call__(self, hostport):
-            return httplib.HTTPSConnection(
+            return httplib2.HTTPSConnection(
                 hostport,
                 key_file=self._key_file, cert_file=self._cert_file)
 
@@ -1166,7 +1167,7 @@ if hasattr(httplib, 'HTTPS'):
                     req.get_full_url())
                 conn_factory = HTTPSConnectionFactory(key_file, cert_file)
             else:
-                conn_factory = httplib.HTTPSConnection
+                conn_factory = httplib2.HTTPSConnection
             return self.do_open(conn_factory, req)
 
         https_request = AbstractHTTPHandler.do_request_
