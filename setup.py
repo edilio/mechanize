@@ -61,6 +61,7 @@ Topic :: Text Processing :: Markup :: HTML
 Topic :: Text Processing :: Markup :: XML
 """
 
+
 def main():
     try:
         import setuptools
@@ -69,22 +70,24 @@ def main():
         ez_setup.use_setuptools()
     import setuptools
     setuptools.setup(
-        name = "mechanize",
-        version = VERSION,
-        license = "BSD",  # or ZPL 2.1
-        platforms = ["any"],
-        classifiers = [c for c in CLASSIFIERS.split("\n") if c],
-        install_requires = [],
-        zip_safe = True,
-        test_suite = "test",
+        name="mechanize",
+        version=VERSION,
+        license="BSD",  # or ZPL 2.1
+        platforms=["any"],
+        classifiers=[c for c in CLASSIFIERS.split("\n") if c],
+        install_requires=[
+            'requests==2.7.0'
+        ],
+        zip_safe=True,
+        test_suite="test",
         author = "John J. Lee",
-        author_email = "jjl@pobox.com",
-        description = __doc__.split("\n", 1)[0],
-        long_description = __doc__.split("\n", 2)[-1],
-        url = "http://wwwsearch.sourceforge.net/mechanize/",
-        download_url = ("http://pypi.python.org/packages/source/m/mechanize/"
-                        "mechanize-%s.tar.gz" % VERSION),
-        packages = ["mechanize"],
+        author_email="jjl@pobox.com",
+        description=__doc__.split("\n", 1)[0],
+        long_description=__doc__.split("\n", 2)[-1],
+        url="http://wwwsearch.sourceforge.net/mechanize/",
+        download_url=("http://pypi.python.org/packages/source/m/mechanize/"
+                      "mechanize-%s.tar.gz" % VERSION),
+        packages=["mechanize"],
         )
 
 
